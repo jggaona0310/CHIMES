@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CHIME</string>
+    <string name="button_silent">Silent Mode</string>
+    <string name="button_audible">Audible Mode</string>
+    <string name="location_update" translatable="false">Location</string>
+    <string name="north_button">Point North</string>
+    <string name="entrance_button">Chime</string>
+    <string name="button_map">View Map</string>
+    <string name="location_permission_denied">Location Permission Denied</string>
+</resources>
