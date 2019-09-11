@@ -1,0 +1,6 @@
+Eric's progress report
+decided on which microcontroller to use on cane
+passing off remaining cane tasks to Robert
+taking over beacon from John once PCB is ordered
+set up Github account
+working on coordinate map and pseudocode for geofencing
