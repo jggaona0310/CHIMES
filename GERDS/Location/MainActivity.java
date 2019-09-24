@@ -1,13 +1,10 @@
 package com.coders.location;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -17,7 +14,6 @@ import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
 import java.util.Locale;
@@ -34,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isGPS = false;
 
-    //Merge oncreate next
+    //Called every time this page started
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,25 +53,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                if (locationResult == null) {
-                    return;
-                }
-                for (Location location : locationResult.getLocations()) {
-                    if (location != null) {
-                        wayLatitude = location.getLatitude();
-                        wayLongitude = location.getLongitude();
-                        txt_silentlocation.setText(String.format(Locale.US, "%s - %s", wayLatitude, wayLongitude));
-                        if (mFusedLocationClient != null) {
-                            mFusedLocationClient.removeLocationUpdates(locationCallback);
-                        }
-                    }
-                }
-            }
-        };
-
         //Action when Location button is clicked
         button_silentlocation.setOnClickListener(v -> {
             if (!isGPS) {
@@ -84,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
             getLocation();
         });
+
     } //End of onCreate
 
     private void getLocation() {
@@ -97,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     if (location != null) {
                         wayLatitude = location.getLatitude();
                         wayLongitude = location.getLongitude();
+                        //sets the outputted text
                         txt_silentlocation.setText(String.format(Locale.US, "%s - %s", wayLatitude, wayLongitude));
                     } else {
                         mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null);
