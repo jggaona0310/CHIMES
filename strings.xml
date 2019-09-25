@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">Display Map</string>
-    <string name="location_permission_denied">User denied permission for device location.</string>
-</resources>
