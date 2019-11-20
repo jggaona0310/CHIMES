@@ -135,41 +135,63 @@ public class MainActivity extends AppCompatActivity {
     //logic for checking Zach and ETB regions
     public void checkLocation() {
         //Zachary numbers
-        y1 = 1.0508*wayLatitude - 128.516151;
+       /* y1 = 1.0508*wayLatitude - 128.516151;
         y2 = -1.47199*wayLatitude - 51.264739;
         y3 = 1.37847*wayLatitude - 138.558410;
-        y4 = -.938798*wayLatitude - 67.59399;
+        y4 = -.938798*wayLatitude - 67.59399;*/
+        //New ZACH REGION
+//        y1 = 2.15442*wayLatitude - 162.31332;
+//        y2 = -.24166*wayLatitude - 88.95483;
+//        y3 = 1.16156*wayLatitude - 131.90745;
+//        y4 = -1.04382*wayLatitude - 94.37783;
+        //NEW NEW NEW ZACH Region (Excel)
+        y1 = 0.827137546*wayLongitude + 110.30921;
+        y2 = -0.805755396*wayLongitude - 47.00435493;
+        y3 = 1.213740458*wayLongitude + 147.55188;
+        y4 = -0.867010975*wayLongitude - 52.90756489;
+
         //ETB Numbers
         etb1 = 1.11952*wayLatitude - 130.623;
         etb2 = -1.17594*wayLatitude - 60.3279;
         etb3 = 1.62281*wayLatitude - 146.032;
         etb4 = -1.60398*wayLatitude - 47.2225;
-        /*
-        etb1 = -1.58754*wayLatitude - 47.7256;
-        etb2 = 1.38211*wayLatitude - 138.664;
-        etb3 = -1.21429*wayLatitude - 61.9097;
-        etb4 = 2.19616*wayLatitude - 163.59;*/ //old values that are messed up
+        //WEB values
+//        web1 = .96747*wayLatitude - 125.96418;
+////        web2 = -.97244*wayLatitude - 99.56152;
+////        web3 = 1.59796*wayLatitude - 145.26840;
+////        web4 = -.88838*wayLatitude - 69.13630;
+
+        //NEW WEB VALUES (Excel)
+        web1 = 0.605122732*wayLongitude + 88.917921;
+        web2 = -1.172366621*wayLongitude - 82.322904;
+        web3 = .5053381*wayLongitude + 79.303582;
+        web4 = -.31783658*wayLongitude;
+
         /////Inside these if statements, you can handle each case however is necessary/////
         if((wayLongitude <= etb1) && (wayLongitude <= etb2) && (wayLongitude >= etb3) && (wayLongitude >= etb4)){
                 //Inside ETB region
             Transition = "You're Inside ETB Region";
             txtTransition.setText(Transition);
         }
-        else if(wayLongitude <= y1 && wayLongitude <= y2 && wayLongitude >= y3 && wayLongitude >= y4){
+        else if(wayLatitude <= y1 && wayLatitude <= y2 && wayLatitude >= y3 && wayLatitude >= y4){
             //inside Zach region
             Transition = "You're Inside Zachry Region";
             txtTransition.setText(Transition);
         }
-        else if (wayLatitude > 30.622693 && wayLatitude < 30.624885 && wayLongitude < -96.338332 && wayLongitude > -96.346089){      //inside square
+        else if(wayLatitude <= web1 && wayLatitude <= web2 && wayLatitude >= web3 && wayLatitude >= web4){
+            //inside WEB region
+            Transition = "You're Inside WEB Region";
+            txtTransition.setText(Transition);
+        }
+      /*  else if (wayLatitude > 30.622693 && wayLatitude < 30.624885 && wayLongitude < -96.338332 && wayLongitude > -96.346089){      //inside square
                     Transition = "You are inside Ucentre";
                     txtTransition.setText(Transition);
-        }
+        }*/
         else{
             Transition = "Unknown Region";
             txtTransition.setText(Transition);
         }
     }
-
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
