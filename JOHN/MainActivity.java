@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
     /////////Function on its own so it can be called from anywhere////////////////
     //logic for checking Zach and ETB regions
-    public void checkLocation() {
+   public void checkLocation() {
         //Zachary numbers
        /* y1 = 1.0508*wayLatitude - 128.516151;
         y2 = -1.47199*wayLatitude - 51.264739;
@@ -151,10 +151,16 @@ public class MainActivity extends AppCompatActivity {
         y4 = -0.867010975*wayLongitude - 52.90756489;
 
         //ETB Numbers
-        etb1 = 1.11952*wayLatitude - 130.623;
-        etb2 = -1.17594*wayLatitude - 60.3279;
-        etb3 = 1.62281*wayLatitude - 146.032;
-        etb4 = -1.60398*wayLatitude - 47.2225;
+//        etb1 = 1.11952*wayLatitude - 130.623;
+//        etb2 = -1.17594*wayLatitude - 60.3279;
+//        etb3 = 1.62281*wayLatitude - 146.032;
+//        etb4 = -1.60398*wayLatitude - 47.2225;
+
+        //NEW ETB NUMS EXCEL
+        etb1 = 1.00641*wayLongitude + 127.58038;
+        etb2 = -0.923240938*wayLongitude -58.32087133;
+        etb3 = 0.437828371*wayLongitude +72.80168497;
+        etb4 = -0.713572023*wayLongitude -38.1231237;
         //WEB values
 //        web1 = .96747*wayLatitude - 125.96418;
 ////        web2 = -.97244*wayLatitude - 99.56152;
@@ -168,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         web4 = -.31783658*wayLongitude;
 
         /////Inside these if statements, you can handle each case however is necessary/////
-        if((wayLongitude <= etb1) && (wayLongitude <= etb2) && (wayLongitude >= etb3) && (wayLongitude >= etb4)){
+        if((wayLatitude <= etb1) && (wayLatitude <= etb2) && (wayLatitude >= etb3) && (wayLatitude >= etb4)){
                 //Inside ETB region
             Transition = "You're Inside ETB Region";
             txtTransition.setText(Transition);
